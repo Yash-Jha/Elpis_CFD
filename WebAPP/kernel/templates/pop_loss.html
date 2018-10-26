@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br>
+
+<section class="w3-mobile">
+	<div class="w3-container">
+		<div class="w3-card-4">
+			<div class="w3-container w3-blue"><h2>Population Loss Estimator</h2></div>
+			<form class="w3-container pop_loss_form" method="GET">
+				<div class="w3-cell-row">
+					<div class="w3-half">
+						<label>Magnitude (in Mw)</label>
+						<input type="text" class="w3-input w3-light-gray" id="magnitude" name="magnitude" required>
+					</div>
+					<div class="w3-half">
+						<label>City</label>
+						<select class="w3-select" name="city" id="city">
+							{% for city in cities %}
+							<option value='{{ city.lat }},{{ city.lng }}'>{{ city.name }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				<div class="w3-cell-row">
+					<div class="w3-half">
+						<label>Average Population Density (in per km<sup>2</sup>)</label>
+						<input type="text" name="density" class="w3-input w3-light-gray" id="density" required>
+					</div>
+					<div class="w3-half">
+						<label>Year</label>
+						<select class="w3-select" name="year" id="year">
+							<option value='-'>-</option>
+							{% for year in years %}
+							<option value='{{ year.density }}'>{{ year.year }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				<div class="w3-cell-row w3-container w3-center">
+					<button class="w3-button">Calculate</button>
+				</div>
+			</form>
+			<div class="w3-container w3-red" id="estimate"></div>
+		</div>
+	</div>
+</section>
+
+<!-- Make the coordinates float -->
+
+<script>
+	$("#density").change(function(){
+		$("#year").val("-");
+	});
+	
+	$("#year").change(function(){
+		if($("#year").val() != "-"){
+			$("#density").val($("#year").val());
+		}else{
+			$("#density").val("");
+		}
+	});
+
+	$(".pop_loss_form").on('submit',function(e){
+		e.preventDefault();
+		$.ajax({
+			url: "request_pop_data",
+			data: $(".pop_loss_form").serialize(),
+			dataType: 'json',
+			success: function(data){
+				$("#estimate").text(data.estimate);
+				$("#estimate").css("display","block");
+			}
+		});
+	});
+</script>
+
+{% endblock %}

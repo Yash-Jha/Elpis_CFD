@@ -1,0 +1,38 @@
+#nav-logo{
+	font-weight:bold;
+}
+
+.w3-bar-item{
+	color:white;
+}
+
+.login-box{
+	margin:auto;
+	width:25%;
+}
+
+.login-box #username, .login-box #password{
+	margin-bottom:1%;
+}
+
+.login-box #login-button{
+	width:100%;
+}
+
+#magnitude{
+	color:black !important;
+}
+
+.pop_loss_form{
+	padding:1%;
+	padding-bottom:0;
+}
+
+.pop_loss_form .w3-half{
+	padding:1% !important;
+
+}
+
+#estimate{
+	display:hidden;
+}
