@@ -1,4 +1,4 @@
-# Elpis_CFD
+# Elpis
 Natural calamities are destructible, yet unavoidable. It is not possible to dodge them, but the impact of these Acts of God can be minimized by deploying strategic planning and effective mitigation methodologies. Elpis, which translates to hope aims to strive for better human and material resource management during situations of tension by providing technology based solutions.
 IoT is a modern conglomerate of technology, offering feasible wireless low power connectivity. We propose to harness it by using such chips, which can detect the impact of disaster in a given region. These technologies can be incorporated with street lights, traffic signals, and signal towers to relay the damage data to a local server which can be further uploaded on a cloud-based server.
 The impact analysis can be determined by sensors. This data along with population density maps can be tapped to estimate the damage and optimize food and other resource management. This data can be extended to get the approximate mortality by using the past data sets, to get the overview of the situation and manage relief strategies.
